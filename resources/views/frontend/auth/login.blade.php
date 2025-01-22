@@ -23,7 +23,7 @@
                         @csrf
                         <div class="form_container">
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email*" value="ridhalfajri00@gmail.com">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email*" value="john@example.com">
                                 <small class="text-danger" id="err_email"></small>
                             </div>
                             <div class="form-group">
@@ -71,6 +71,7 @@
                 processData: false,
                 success: function(response) {
                     resetForm()
+                    console.log(response)
                     window.location.href = response.redirect
                 },
                 error: function (xhr) {

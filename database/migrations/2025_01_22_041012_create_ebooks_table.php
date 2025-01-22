@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('ebooks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('title');
             $table->string('author');
             $table->decimal('price', 10, 2);

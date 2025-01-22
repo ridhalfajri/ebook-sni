@@ -107,7 +107,7 @@
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Yes, delete it!"
             }).then((willDelete) => {
-                if(willDelete){
+                if(willDelete.isConfirmed){
                     $.ajax({
                         url: `{{ route('categories.destroy', ':id') }}`.replace(':id', id),
                         type: 'DELETE',
@@ -125,6 +125,7 @@
                             $("#categoryTable").DataTable().ajax.reload();
                         },
                         error: function(xhr) {
+                            console.info(xhr.responseJSON)
                             Swal.fire({
                                 position: "top-end",
                                 icon: "error",
@@ -133,6 +134,15 @@
                                 timer: 1500
                             });
                         }
+                    });
+                }
+                else {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "error",
+                        title: "Delete action has been canceled.",
+                        showConfirmButton: false,
+                        timer: 1000
                     });
                 }
             });

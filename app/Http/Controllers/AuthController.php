@@ -43,8 +43,6 @@ class AuthController extends Controller
         }elseif(Auth::user()->role == User::ADMIN){
             $redirect = route('dashboard.index');
         }
-
-        flash()->success('Login successful.');
         return response()->json(['message' => 'Login successful','redirect'=>$redirect], 200);
     }
 
