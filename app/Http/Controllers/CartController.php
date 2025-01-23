@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\CartItem;
+use App\Models\Ebook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -28,7 +31,34 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ebook = Ebook::where('id',$request->id)->first();
+        if($ebook == null){
+            return response()->json(['message'=>'Ebook not found.',404]);
+        }
+        $cart = Cart::where('user_id',Auth::user()->id)->first();
+        if($cart == null){
+            $cart = new Cart();
+            $cart->user_id = Auth::user()->id;
+            $cart->save();
+        }
+        $cart_item = CartItem::where('cart_id',$cart->id)->where('ebook_id',$request->id)->first();
+        if($cart_item == null){
+            $cart_item = new CartItem();
+            $cart_item->ebook_id = $request->id;
+            $cart_item->cart_id = $cart->id;
+            $cart_item->quantity = 1;
+            $cart_item->price = $cart_item->quantity * $ebook->price;
+            $cart_item->save();
+            return response()->json(['message'=>'The product has been successfully added to your cart!'],200);
+        }
+
+        $cart_item->ebook_id = $request->id;
+        $cart_item->quantity = $cart_item->quantity + 1;
+        $cart_item->price = $cart_item->quantity * $ebook->price;
+        $cart_item->save();
+        return response()->json(['message'=>'The product has been successfully added to your cart!'],200);
+
+        
     }
 
     /**
