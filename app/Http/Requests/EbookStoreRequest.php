@@ -31,4 +31,11 @@ class EbookStoreRequest extends FormRequest
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Misalnya, hanya gambar
         ];
     }
+    public function messages()
+    {
+        return [
+            'category_id.required' => 'The category field is required.',
+            'category_id.exists' => 'The selected category is invalid. Please choose a valid category.',
+        ];
+    }
 }

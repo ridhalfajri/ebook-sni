@@ -4,8 +4,8 @@
     <style>
 
         .image-preview-container {
-            width: 300px;
-            height: 200px;
+            width: 336px;
+            height: 336px;
             overflow: hidden;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -89,9 +89,9 @@
                                 </div><!-- custom-file -->
                             </div>
                             <div class="col-lg-4">
-                                <label class="form-control-label">Thumbnail: <span class="tx-danger">*</span></label>
+                                <label class="form-control-label">Thumbnail: <span class="tx-danger">* Pastikan ukuran thumbnail 400px * 400px</span></label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="thumbnail" id="thumbnail" accept=".png">
+                                    <input type="file" class="custom-file-input" name="thumbnail" id="thumbnail" accept=".png,.jpg,.jpeg">
                                     <label class="custom-file-label" for="thumbnail"id='label_choose_thumbnail'>Choose thumbnail</label>
                                     <small small class="text-danger" id="err_thumbnail"></small>
                                 </div><!-- custom-file -->

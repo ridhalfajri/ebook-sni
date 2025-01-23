@@ -104,7 +104,7 @@
                             <div class="col-lg-4">
                                 <label class="form-control-label">Thumbnail: <span class="tx-danger">*</span></label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="thumbnail" id="thumbnail" accept=".png">
+                                    <input type="file" class="custom-file-input" name="thumbnail" id="thumbnail" accept=".png,.jpg,.jpeg">
                                     <label class="custom-file-label" for="thumbnail"id='label_choose_thumbnail'>Choose thumbnail</label>
                                     <input type="hidden" class="custom-file-input" name="old_thumbnail" id="old_thumbnail" value="{{ $ebook->thumbnail }}">
                                     <small small class="text-danger" id="err_thumbnail"></small>
