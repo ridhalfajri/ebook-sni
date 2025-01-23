@@ -35,10 +35,12 @@
     <link href="{{ asset('assets/backend/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/lib/perfect-scrollbar/css/perfect-scrollbar.min.css') }}" rel="stylesheet">
 
+    {{-- custom --}}
+    @stack('style')
+
     <!-- Slim CSS -->
     <link rel="stylesheet" href="{{ asset('assets/backend/css/slim.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
-    @stack('style')
 
 
 </head>
@@ -67,7 +69,7 @@
 <script src="{{ asset('assets/backend/lib/bootstrap/js/bootstrap.js') }}"></script>
 <script src="{{ asset('assets/backend/lib/jquery.cookie/js/jquery.cookie.js') }}"></script>
 <script src="{{ asset('assets/backend/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
-
+@stack('scripts')
 <script src="{{ asset('assets/backend/js/slim.js') }}"></script>
 <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -89,6 +91,5 @@
         });
     }
 </script>
-@stack('scripts')
 </body>
 </html>

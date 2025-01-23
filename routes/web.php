@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EbookController;
 use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/', function () {
@@ -22,6 +23,10 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         Route::resource('/categories',CategoryController::class)->except('show','update');
         Route::post('/categories/datatable',[CategoryController::class,'datatable'])->name('categories.datatable');
         Route::post('/categories/{category}',[CategoryController::class,'update'])->name('categories.update');
+
+        Route::resource('/ebooks',EbookController::class)->except('update');
+        Route::post('/ebooks/datatable',[EbookController::class,'datatable'])->name('ebooks.datatable');
+        Route::post('/ebooks/{ebook}',[EbookController::class,'update'])->name('ebooks.update');
     });
 });
 
