@@ -56,7 +56,7 @@ class EbookController extends Controller
      */
     public function show(Ebook $ebook)
     {
-        //
+        return view('backend.ebook.show',compact('ebook'));
     }
 
     /**
@@ -102,7 +102,16 @@ class EbookController extends Controller
      */
     public function destroy(Ebook $ebook)
     {
-        //
+        if (Storage::disk('public')->exists($ebook->file_path)) {
+            Storage::disk('public')->delete($ebook->file_path);
+        }
+        if (Storage::disk('public')->exists($ebook->thumbnail)) {
+            Storage::disk('public')->delete($ebook->thumbnail);
+        }
+        if($ebook->delete()){
+            return response()->json(['message' => 'Success delete ebook.'],200);
+        }
+        return response()->json(['message' => 'Failed to delete the ebook. Please try again.'], 500);
     }
 
     /**

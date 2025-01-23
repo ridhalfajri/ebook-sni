@@ -39,7 +39,7 @@
         <div class="row row-sm mg-t-20">
             <div class="col-lg">
                 <div class="section-wrapper">
-                    <label class="section-title">Top Label Layout</label>
+                    <label class="section-title">Ebook Edit</label>
                     <p class="mg-b-20 mg-sm-b-40">A form with a label on top of each form control.</p>
                     <form action="{{route('ebooks.update',$ebook->id)}}" method="POST" id="form-ebook" enctype="multipart/form-data">
                         <div class="form-layout">

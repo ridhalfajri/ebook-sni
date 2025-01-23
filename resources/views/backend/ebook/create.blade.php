@@ -34,8 +34,7 @@
         <div class="row row-sm mg-t-20">
             <div class="col-lg">
                 <div class="section-wrapper">
-                    <label class="section-title">Top Label Layout</label>
-                    <p class="mg-b-20 mg-sm-b-40">A form with a label on top of each form control.</p>
+                    <label class="section-title">Ebook Input</label>
                     <form action="{{route('ebooks.store')}}" method="POST" id="form-ebook" enctype="multipart/form-data">
                         <div class="form-layout">
                         <div class="row mg-b-25">
