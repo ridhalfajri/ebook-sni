@@ -23,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrapFive();
         Carbon::setLocale('id');
+        CartServiceProvider::class;
     }
 }

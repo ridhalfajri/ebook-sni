@@ -28,7 +28,7 @@
                 <div class="col-md-8">
                   <div class="post-wrapper">
                     <span>{{ $ebook->category->name }}</span>
-                    <a href="" class="activity-title">RP. {{ number_format($ebook->price, 2, ',', '.') }}</a>
+                    <a href="" class="activity-title">Rp {{ number_format($ebook->price, 2, ',', '.') }}</a>
                     <p>{{ $ebook->description }}</p>
                     <p class="mg-b-0">
                       <a href="{{asset('storage/' . $ebook->file_path)}}" class="d-block">Download</a>

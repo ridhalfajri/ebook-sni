@@ -60,6 +60,11 @@ class CartItemController extends Controller
      */
     public function destroy(CartItem $cartItem)
     {
-        //
+        if ($cartItem->delete()){
+
+            return response()->json(['message' => 'Success delete cart item.'],200);
+        }
+
+        return response()->json(['message' => 'Failed to delete the cart item. Please try again.'], 500);
     }
 }

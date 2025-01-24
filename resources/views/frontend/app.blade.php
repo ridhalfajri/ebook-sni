@@ -74,7 +74,51 @@
                 }
             });
         }
+
+        function formatRupiahHeader(amount) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+            }).format(amount);
+        }
+        $('#cart_items').hover(function() {
+            $.ajax({
+                url: '{{ route("cart.get_items") }}',
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(data) {
+                    $('#cart-items-list').empty(); // Clear previous items
+                    if (data.length > 0) {
+                        data.forEach(function(item) {
+                            $('#cart-items-list').append(`
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <figure>
+                                            <img src="{{ asset('storage/') }}/${item.thumbnail}" data-src="{{ asset('storage/') }}/${item.thumbnail}" alt="" width="50" height="50" class="lazy">
+                                        </figure>
+                                        <strong>
+                                            <span>${item.quantity}x ${item.title}</span> ${formatRupiahHeader(item.price)}
+                                        </strong>
+                                    </a>
+                                </li>
+                            `);
+                        });
+                    } else {
+                        $('#cart-items-list').append('<li>Your cart is empty.</li>');
+                    }
+                    $('#cart-dropdown').show(); // Show the dropdown
+                },
+                error: function(xhr) {
+                    console.error('Error fetching cart items:', xhr);
+                    }
+            });
+            }, function() {
+            $('#cart-dropdown').hide();
+        });
     </script>
+
     @stack('scripts')
 </body>
 </html>

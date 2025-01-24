@@ -21,6 +21,18 @@ class EbookController extends Controller
         $categories = Category::select('name')->get();
         return view('backend.ebook.index',compact('max_price','categories'));
     }
+    
+    /**
+     * Get Ebooks
+     */
+    public function user_index(Request $request) {
+        $ebooks = Ebook::select('ebooks.*','categories.name')->join('categories','categories.id','ebooks.category_id');
+        if($request->categoryName != null){
+            $ebooks->where('categories.name',$request->categoryName);
+        }
+        $ebooks = $ebooks->paginate(8)->withQueryString();
+        return view('frontend.ebook.index',compact('ebooks'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -38,7 +50,7 @@ class EbookController extends Controller
     {
         $filePath = $request->file('file_path')->store('ebooks/files', 'public');
         $thumbnailPath = $request->file('thumbnail')->store('ebooks/thumbnails', 'public');
-        
+
         $ebook = new Ebook();
         $ebook->category_id = $request->category_id;
         $ebook->title = $request->title;
@@ -57,6 +69,10 @@ class EbookController extends Controller
     public function show(Ebook $ebook)
     {
         return view('backend.ebook.show',compact('ebook'));
+    }
+    public function user_show(Ebook $ebook)
+    {
+        return view('frontend.ebook.show',compact('ebook'));
     }
 
     /**
