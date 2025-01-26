@@ -89,7 +89,6 @@
                         <span class="new_price">Rp {{ number_format($ebook->price, 2, ',', '.') }}</span>
                     </div>
                     <ul>
-                        <li><a href="javascript:void(0)" class="tooltip-1 favorite_book" data-id="{{ $ebook->id }}" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
                         <li><a href="javascript:void(0)" class="tooltip-1 cart_book" data-id="{{ $ebook->id }}" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart" onclick="add_to_cart(this)"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
                     </ul>
                 </div>

@@ -117,6 +117,14 @@
             }, function() {
             $('#cart-dropdown').hide();
         });
+
+        $('#search-form').submit(function(e) {
+            e.preventDefault();
+            const searchQuery = $('#search_ebook').val();
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('title', searchQuery);
+            window.location.href = currentUrl.toString();
+        });
     </script>
 
     @stack('scripts')

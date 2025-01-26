@@ -30,6 +30,9 @@ class EbookController extends Controller
         if($request->categoryName != null){
             $ebooks->where('categories.name',$request->categoryName);
         }
+        if($request->title != null){
+            $ebooks->where('ebooks.title', 'like', '%' . $request->title . '%');
+        }
         $ebooks = $ebooks->paginate(8)->withQueryString();
         return view('frontend.ebook.index',compact('ebooks'));
     }
